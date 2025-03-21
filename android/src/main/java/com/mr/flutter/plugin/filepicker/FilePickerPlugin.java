@@ -202,7 +202,11 @@ public class FilePickerPlugin implements MethodChannel.MethodCallHandler, Flutte
                     new Runnable() {
                         @Override
                         public void run() {
-                            MethodResultWrapper.this.methodResult.success(result);
+                            try{
+                                MethodResultWrapper.this.methodResult.success(result);
+                            }catch(Exception e){
+                                System.out.println("Failed to send result");
+                            }
                         }
                     });
         }
